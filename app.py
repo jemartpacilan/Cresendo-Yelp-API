@@ -38,7 +38,7 @@ def yelp_data():
         params = {
             'api_key': os.getenv('FACEPLUS_KEY'),
             'api_secret': os.getenv('FACEPLUS_SECRET'),
-            'image_url': i['user']['image_url'],
+            'image_url': review['user']['image_url'],
             'return_attributes': 'emotion'
         }
         try:
