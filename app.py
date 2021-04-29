@@ -34,7 +34,7 @@ def yelp_data():
     except requests.exceptions.RequestException as e:
         return 'Failed to get business reviews data'
 
-    for i in business_reviews['reviews']:
+    for review in business_reviews['reviews']:
         params = {
             'api_key': os.getenv('FACEPLUS_KEY'),
             'api_secret': os.getenv('FACEPLUS_SECRET'),
@@ -46,7 +46,7 @@ def yelp_data():
             faceplus_response = requests.post(FACEPLUS_REQUEST_URL, params=params)
             face = faceplus_response.json()
             face_emotion = face['faces'][0]['attributes']['emotion']
-            i['user']['emotion'] = max(face_emotion, key=face_emotion.get)
+            review['user']['emotion'] = max(face_emotion, key=face_emotion.get)
         except requests.exceptions.RequestException as e:
             return 'Failed to process the emotion of the image'
 
