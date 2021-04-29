@@ -2,6 +2,3 @@ Flask==1.1.2
 python-dotenv
 yelp
 requests
-# luxand
-fer
-# matplotlib
